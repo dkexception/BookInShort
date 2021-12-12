@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Welcome</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<meta name="decription" content="Book In Short is our android project">
+		<meta name="author" content="mkdpro">
+		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+		<script type="text/javascript" src = "./nicEdit.js"></script>
+		
+		<script type="text/javascript" src = "./main.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-firestore.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117281209-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117281209-1');
+</script>
+	</head>
+	<body onload="acl()">
+		<header>
+			<div class = "logo" style="text-align: left; margin-left: 30px;">
+				<h1 style="display: inline-block; margin-top:3px;">Book In Short</h1>
+				<input type="button" class="button" style="float:right;" onclick="signOut()" value="LOGOUT"/>
+			</div>
+		</header></br>
+		<center>
+			<div style="display: inline-block;padding:20px; border: 1px solid black; width: 60%;margin-right:20px; height: 600px;" class="shadowStyle">
+				<textarea rows="40" style="resize: none;" cols="100" id="ta1" onchange="hotLoad()"></textarea>
+			</div>
+			<div style="display: inline-block; border: 1px solid black; width: 25%; height: 600px; overflow: scroll;" class="shadowStyle" id="result"/>
+		</center>
+		</body>
+		<script>
+			function acl(){
+				var user = firebase.auth().onAuthStateChanged(function(user){
+					if(user){
+						document.title =  "Welcome "+ user.displayName;
+					}
+					else{
+						console.log("Logged out!");
+						location.href = "/";
+					}
+				});
+			}
+		</script>
+</html>
