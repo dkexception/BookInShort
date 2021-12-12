@@ -1,1 +1,1 @@
-"# BookInShort" 
+# BookInShort
